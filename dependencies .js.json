@@ -1,0 +1,4 @@
+mkdir token-console
+cd token-console
+npm init -y
+npm install express web3 axios
