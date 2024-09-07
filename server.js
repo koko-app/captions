@@ -95,4 +95,39 @@ const tokenData = {
   low24h: 0.99,
   publicPrice: '1 USD per BUSD',
   network: 'BSC Mainnet',
-  logo: 'https://images.dodoex.
+  logo: 'https://images.dodoex.io/4z5LcreZcLE9ZYJF6ceVP5TqvYPCstbYVR3sBd65vYE/rs:fit:0/g:no/aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2RvZG8tbWVkaWEtc3RhZ2luZy91cGxvYWRfaW1nXzk4MDUxMThfMjAyNDA4MTAyMDIxNDA3MjkuanBlZw.webp'
+};
+
+// Route to fetch and display token data
+app.get('/', async (req, res) => {
+  // Optionally, fetch data from blockchain or external APIs here
+
+  res.send(`
+    <html>
+      <head>
+        <title>${tokenData.name} Console</title>
+      </head>
+      <body>
+        <h1>${tokenData.name} Token Dashboard</h1>
+        <img src="${tokenData.logo}" alt="${tokenData.name} logo" width="100">
+        <ul>
+          <li>Last Price: $${tokenData.lastPrice}</li>
+          <li>Total Supply: ${tokenData.totalSupply}</li>
+          <li>Circulating Supply: ${tokenData.circulatingSupply}</li>
+          <li>24h Volume: ${tokenData.volume24h}</li>
+          <li>Market Cap: ${tokenData.marketCap}</li>
+          <li>24h High: $${tokenData.high24h}</li>
+          <li>24h Low: $${tokenData.low24h}</li>
+          <li>Public Price: ${tokenData.publicPrice}</li>
+          <li>Network: ${tokenData.network}</li>
+        </ul>
+      </body>
+    </html>
+  `);
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
